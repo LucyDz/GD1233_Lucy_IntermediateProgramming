@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,11 +18,15 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float speed;
 
+    [SerializeField] private Movement movement;
+
     private float _gravity = -9.81f;
     [SerializeField] private float gravityMultiplier = 3.0f;
     private float _velocity;
 
     [SerializeField] private float jumpPower;
+    private int _numberOfJumps;
+    [SerializeField] private int maxNumberOfJumps = 2;
     private void Awake()
     {
            _characterController = GetComponent<CharacterController>();
@@ -28,6 +34,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        
         ApplyGravity();
         ApplyRotation();
         ApplyMovement();
@@ -54,7 +61,10 @@ public class PlayerController : MonoBehaviour
     }
     private void ApplyMovement()
     {
-        _characterController.Move(_direction * speed * Time.deltaTime);
+        var targetSpeed = movement.isSprinting ? movement.speed * movement.multiplier : movement.speed;
+        movement.currentSpeed = Mathf.MoveTowards(movement.currentSpeed, targetSpeed, movement.acceleration * Time.deltaTime);
+
+        _characterController.Move(_direction * movement.currentSpeed * Time.deltaTime);
     }
     public void Move(InputAction.CallbackContext context)
     {
@@ -64,10 +74,34 @@ public class PlayerController : MonoBehaviour
     public void Jump(InputAction.CallbackContext context)
     {
         if (!context.started) return;
-        if (!IsGrounded()) return;
+        if (!IsGrounded() && _numberOfJumps >= maxNumberOfJumps) return;
+        if (_numberOfJumps == 0 ) StartCoroutine(WaitForLanding());
 
-        _velocity += jumpPower;
+        _numberOfJumps++;
+        _velocity = jumpPower;
+    }
+    public void Sprint(InputAction.CallbackContext context)
+    {
+        movement.isSprinting = context.started || context.performed;
+    }
+
+    private IEnumerator WaitForLanding()
+    {
+        yield return new WaitUntil(() => !IsGrounded());
+        yield return new WaitUntil(IsGrounded);
+
+        _numberOfJumps = 0;
     }
 
     private bool IsGrounded() => _characterController.isGrounded;
+}
+
+[Serializable]
+public struct Movement
+{
+    public float speed;
+    public float multiplier;
+    public float acceleration;
+    [HideInInspector]public bool isSprinting;
+    [HideInInspector] public float currentSpeed;
 }
