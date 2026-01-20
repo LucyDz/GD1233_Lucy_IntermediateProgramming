@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
 
     [SerializeField] private Movement movement;
+    #region Animation
+    [SerializeField] private Animator _animator;
+    private static readonly int Speed = Animator.StringToHash("Speed");
+    #endregion
     #region Gravity
     private float _gravity = -9.81f;
     [SerializeField] private float gravityMultiplier = 3.0f;
@@ -40,6 +44,7 @@ public class PlayerController : MonoBehaviour
         ApplyGravity();
         ApplyRotation();
         ApplyMovement();
+        AnimationParameters();
     }
     private void ApplyGravity()
     {
@@ -85,6 +90,10 @@ public class PlayerController : MonoBehaviour
     public void Sprint(InputAction.CallbackContext context)
     {
         movement.isSprinting = context.started || context.performed;
+    }
+    private void AnimationParameters()
+    {
+        _animator?.SetFloat(Speed, _characterController.velocity.sqrMagnitude);
     }
 
     private IEnumerator WaitForLanding()
