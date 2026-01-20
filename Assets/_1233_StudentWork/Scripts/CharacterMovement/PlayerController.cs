@@ -19,14 +19,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
 
     [SerializeField] private Movement movement;
-
+    #region Gravity
     private float _gravity = -9.81f;
     [SerializeField] private float gravityMultiplier = 3.0f;
     private float _velocity;
-
+    #endregion
+    #region Jumps
     [SerializeField] private float jumpPower;
     private int _numberOfJumps;
     [SerializeField] private int maxNumberOfJumps = 2;
+    #endregion
     private void Awake()
     {
            _characterController = GetComponent<CharacterController>();
