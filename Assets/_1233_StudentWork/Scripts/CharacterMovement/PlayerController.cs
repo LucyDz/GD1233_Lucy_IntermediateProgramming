@@ -99,7 +99,8 @@ public class PlayerController : MonoBehaviour
     }
     private void AnimationParameters()
     {
-        _animator?.SetFloat(Speed, _characterController.velocity.sqrMagnitude);
+        Vector3 horizontalMvmnt = new Vector3(_characterController.velocity.x, 0, _characterController.velocity.z);
+        _animator?.SetFloat(Speed, horizontalMvmnt.sqrMagnitude);
 
         _animator?.SetBool(Grndd, IsGrounded());
         if (_isJumping) _animator?.SetTrigger(JumpReq);
