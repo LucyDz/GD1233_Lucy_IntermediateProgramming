@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,6 +20,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
 
     [SerializeField] private Movement movement;
+    #region Camera
+    public CinemachineCamera _followCam;
+    public CinemachineCamera _staticCam;
+
+    public void CamSwap()
+    {
+        
+        if (CameraManager.ActiveCamera == _staticCam)
+        {
+            CameraManager.SwitchCamera(_followCam);
+        }
+        else CameraManager.SwitchCamera(_staticCam);
+        }
+    #endregion
+    
     #region Animation
     [SerializeField] private Animator _animator;
     private static readonly int Speed = Animator.StringToHash("Speed");
