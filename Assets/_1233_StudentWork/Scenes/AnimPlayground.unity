@@ -704,7 +704,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1911978790}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &556831196
 MonoBehaviour:
@@ -1424,13 +1424,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 892116141}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0.0000001490116, z: -0.00000021486228, w: 0.70710677}
-  m_LocalPosition: {x: -4.62, y: 24.97, z: 0.29}
+  m_LocalRotation: {x: 0.66758156, y: -0, z: -0, w: 0.7445367}
+  m_LocalPosition: {x: -4.62, y: 24.52, z: -3.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_Father: {fileID: 1911978790}
+  m_LocalEulerAnglesHint: {x: 83.761, y: 0, z: 0}
 --- !u!114 &892116144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2160,7 +2160,7 @@ MonoBehaviour:
   ShowDebugText: 0
   ShowCameraFrustum: 1
   IgnoreTimeScale: 0
-  WorldUpOverride: {fileID: 0}
+  WorldUpOverride: {fileID: 892116143}
   ChannelMask: -1
   UpdateMethod: 2
   BlendUpdateMethod: 1
@@ -2168,7 +2168,7 @@ MonoBehaviour:
     Enabled: 0
     DefaultMode: 2
   DefaultBlend:
-    Style: 1
+    Style: 6
     Time: 1
     CustomCurve:
       serializedVersion: 2
@@ -2604,6 +2604,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1606459040}
+  - {fileID: 892116143}
+  - {fileID: 556831195}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
@@ -2621,5 +2623,3 @@ SceneRoots:
   - {fileID: 1892717863}
   - {fileID: 390252399}
   - {fileID: 1911978790}
-  - {fileID: 892116143}
-  - {fileID: 556831195}

@@ -67,5 +67,7 @@ public class ButtonSounds : MonoBehaviour
             AudioMgr.Instance.PlaySound(_hoverSound);
         else
             AudioMgr.Instance.PlaySound(AudioMgr.SoundTypes.ButtonHover);
+       
     }
+
 }
