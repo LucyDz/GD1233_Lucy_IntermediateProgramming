@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,9 +20,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
 
     [SerializeField] private Movement movement;
+    #region Camera
+
+
+    public void CamSwap()
+    {
+        CameraManager.Instance.SwitchCamera();
+    }
+    #endregion
+
     #region Animation
     [SerializeField] private Animator _animator;
     private static readonly int Speed = Animator.StringToHash("Speed");
+    private static readonly int Grndd = Animator.StringToHash("IsGrounded");
+    private static readonly int JumpReq = Animator.StringToHash("JumpReq 0");
+    private bool _isJumping;
     #endregion
     #region Gravity
     private float _gravity = -9.81f;
@@ -73,6 +86,7 @@ public class PlayerController : MonoBehaviour
 
         _characterController.Move(_direction * movement.currentSpeed * Time.deltaTime);
     }
+    #region InputLogic
     public void Move(InputAction.CallbackContext context)
     {
         _input = context.ReadValue<Vector2>();
@@ -80,12 +94,14 @@ public class PlayerController : MonoBehaviour
     }
     public void Jump(InputAction.CallbackContext context)
     {
+        //Debug.Log("Jumped");
         if (!context.started) return;
         if (!IsGrounded() && _numberOfJumps >= maxNumberOfJumps) return;
         if (_numberOfJumps == 0 ) StartCoroutine(WaitForLanding());
-
+        _isJumping = true;
         _numberOfJumps++;
         _velocity = jumpPower;
+
     }
     public void Sprint(InputAction.CallbackContext context)
     {
@@ -93,14 +109,19 @@ public class PlayerController : MonoBehaviour
     }
     private void AnimationParameters()
     {
-        _animator?.SetFloat(Speed, _characterController.velocity.sqrMagnitude);
-    }
+        Vector3 horizontalMvmnt = new Vector3(_characterController.velocity.x, 0, _characterController.velocity.z);
+        _animator?.SetFloat(Speed, horizontalMvmnt.sqrMagnitude);
 
+        _animator?.SetBool(Grndd, IsGrounded());
+        if (_isJumping) _animator?.SetTrigger(JumpReq);
+        _isJumping = false;
+    }
+    #endregion
     private IEnumerator WaitForLanding()
     {
         yield return new WaitUntil(() => !IsGrounded());
         yield return new WaitUntil(IsGrounded);
-
+        _animator?.SetBool(Grndd, true);
         _numberOfJumps = 0;
     }
 
