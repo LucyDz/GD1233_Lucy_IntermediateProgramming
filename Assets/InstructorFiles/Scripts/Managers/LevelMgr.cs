@@ -13,6 +13,7 @@ public class LevelMgr : Singleton<LevelMgr>
 {
     [SerializeField] private string[] _levelSceneNames;
 
+
     private int _currentLevelIndex;
     public bool IsLevelLoaded {  get; private set; }
 
@@ -20,6 +21,13 @@ public class LevelMgr : Singleton<LevelMgr>
     {
         IsLevelLoaded = false;
         StartCoroutine(LoadLevelRoutine());
+    }
+
+    public void LevelIncrease()
+    {
+        
+        if (_currentLevelIndex >= _levelSceneNames.Length -1) { _currentLevelIndex = 0; }
+        else _currentLevelIndex++;
     }
 
     private IEnumerator LoadLevelRoutine()

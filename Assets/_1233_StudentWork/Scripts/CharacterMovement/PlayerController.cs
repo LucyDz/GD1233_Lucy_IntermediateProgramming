@@ -21,20 +21,14 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Movement movement;
     #region Camera
-    public CinemachineCamera _followCam;
-    public CinemachineCamera _staticCam;
+
 
     public void CamSwap()
     {
-        
-        if (CameraManager.ActiveCamera == _staticCam)
-        {
-            CameraManager.SwitchCamera(_followCam);
-        }
-        else CameraManager.SwitchCamera(_staticCam);
-        }
+        CameraManager.Instance.SwitchCamera();
+    }
     #endregion
-    
+
     #region Animation
     [SerializeField] private Animator _animator;
     private static readonly int Speed = Animator.StringToHash("Speed");
