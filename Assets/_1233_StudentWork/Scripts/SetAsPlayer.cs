@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SetAsPlayer : MonoBehaviour
 {
-    void Start()
+    void Awake()
     {
         PlayerMgr.Instance.DebugAssignAsPlayer(gameObject);
     }
