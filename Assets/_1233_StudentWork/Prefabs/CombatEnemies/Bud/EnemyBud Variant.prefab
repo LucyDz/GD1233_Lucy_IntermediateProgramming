@@ -70,6 +70,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1479793117402013598, guid: 61200dadbd601d8418e3bee314301069, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2410984242224772814, guid: 61200dadbd601d8418e3bee314301069, type: 3}
       propertyPath: m_Name
       value: EnemyBud Variant
@@ -116,6 +120,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3990736311433706942, guid: 61200dadbd601d8418e3bee314301069, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5772585751531826638, guid: 61200dadbd601d8418e3bee314301069, type: 3}
+      propertyPath: _health
+      value: 
+      objectReference: {fileID: 2211099272748938697}
+    - target: {fileID: 9063013818373554414, guid: 61200dadbd601d8418e3bee314301069, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063013818373554414, guid: 61200dadbd601d8418e3bee314301069, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063013818373554414, guid: 61200dadbd601d8418e3bee314301069, type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -239,7 +259,7 @@ MonoBehaviour:
   _detection: {fileID: 1250573310520721578}
   _rotator: {fileID: 4720698206961196098}
   _animator: {fileID: 456905628911763403}
-  _mode: 1
+  _mode: 2
   _fixedAxis: {x: 0, y: 0, z: 1}
 --- !u!114 &456905628911763403 stripped
 MonoBehaviour:

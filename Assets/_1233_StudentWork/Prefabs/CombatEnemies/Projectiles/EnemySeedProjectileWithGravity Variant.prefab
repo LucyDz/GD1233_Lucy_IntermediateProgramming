@@ -12,6 +12,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySeedProjectileWithGravity Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5116126372953263331, guid: fac90f1c19503ee4498bd9bff71bd973, type: 3}
+      propertyPath: m_Radius
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116126372953263331, guid: fac90f1c19503ee4498bd9bff71bd973, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478796742213125294, guid: fac90f1c19503ee4498bd9bff71bd973, type: 3}
+      propertyPath: _useGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5844118005928463808, guid: fac90f1c19503ee4498bd9bff71bd973, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

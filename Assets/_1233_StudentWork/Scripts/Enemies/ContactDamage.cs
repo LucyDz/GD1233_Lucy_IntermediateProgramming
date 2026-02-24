@@ -18,14 +18,14 @@ public class ContactDamage : MonoBehaviour
         TryApplyDamage(collision.gameObject);
     }
 
-    private void OnTriggerEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        TryApplyDamage(collision.gameObject);
+        TryApplyDamage(other.gameObject);
     }
 
-    private void OnTriggerStay(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
-        TryApplyDamage(collision.gameObject);
+        TryApplyDamage(other.gameObject);
     }
 
     private void TryApplyDamage(GameObject target)

@@ -110,9 +110,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2934166401450209672, guid: 8f2c9319b4832514ea126daa11f6ac6a, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2934166401450209672, guid: 8f2c9319b4832514ea126daa11f6ac6a, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3693190317088288029, guid: 8f2c9319b4832514ea126daa11f6ac6a, type: 3}
       propertyPath: m_Name
-      value: EnemySeedProjectileNoGravity
+      value: EnemySeedProjectileNoGravity Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768731972867734675, guid: 8f2c9319b4832514ea126daa11f6ac6a, type: 3}
+      propertyPath: m_Radius
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

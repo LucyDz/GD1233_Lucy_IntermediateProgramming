@@ -44,11 +44,12 @@ public class TrainingDummyBrain : MonoBehaviour
     private void HandleDied()
     {
         Debug.Log("[Dummy] Died! Resetting...");
+        _animatorDriver?.TriggerDie();
         if (_autoReset) Invoke(nameof(ResetDummy), _resetDelay);
     }
 
     private void ResetDummy()
-    {
+    {   
         _health.ResetHealth();
     }
 

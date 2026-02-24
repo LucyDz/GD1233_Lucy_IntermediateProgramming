@@ -18,9 +18,11 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // Don't hit the source
         if (collision.gameObject == _source) return;
 
-        var damageReceiver = collision.gameObject.GetComponent<IDamageReceiver>();
+        // Check if we hit something damageable
+        var damageReceiver = collision.gameObject.GetComponentInParent<IDamageReceiver>();
         if (damageReceiver != null )
         {
             var info = new DamageInfo
@@ -30,8 +32,10 @@ public class Projectile : MonoBehaviour
                 HitPoint = collision.contacts[0].point,
                 HitNormal = collision.contacts[0].normal,
             };
+            damageReceiver.ApplyDamage(info);
         }
 
+        // Destroy on impact
         Destroy(gameObject);
     }
 
@@ -40,7 +44,7 @@ public class Projectile : MonoBehaviour
         _source = source;
         _rb.linearVelocity = direction.normalized * _speed;
         transform.forward = direction;
-        Destroy(gameObject, _lifetime);
+        Destroy(gameObject, _lifetime); // Simple destruction for now
     }
 
     public void LaunchWithVelocity(Vector3 velocity, GameObject source)
@@ -49,7 +53,7 @@ public class Projectile : MonoBehaviour
         _rb.linearVelocity = velocity;
         if(velocity.sqrMagnitude > 0.001f)
             transform.forward = velocity;
-        _rb.useGravity = true;
+        _rb.useGravity = true; // Force gravity for arc shots
         Destroy(gameObject, _lifetime);
     }
 }
