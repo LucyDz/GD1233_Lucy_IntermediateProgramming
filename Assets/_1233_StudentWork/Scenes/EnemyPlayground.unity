@@ -258,15 +258,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3167254700713076088, guid: 0e908354d24008d40822f2289ca3c4cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.17
+      value: -14.67
       objectReference: {fileID: 0}
     - target: {fileID: 3167254700713076088, guid: 0e908354d24008d40822f2289ca3c4cf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.7
+      value: -0.23
       objectReference: {fileID: 0}
     - target: {fileID: 3167254700713076088, guid: 0e908354d24008d40822f2289ca3c4cf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 49.27
+      value: 38.69
       objectReference: {fileID: 0}
     - target: {fileID: 3167254700713076088, guid: 0e908354d24008d40822f2289ca3c4cf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -764,9 +764,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2516047661243192177, guid: d28537b1f96a36a4ebb4cbcda5ff16f6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 309867834}
-    - targetCorrespondingSourceObject: {fileID: 2516047661243192177, guid: d28537b1f96a36a4ebb4cbcda5ff16f6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 309867833}
   m_SourcePrefab: {fileID: 100100000, guid: d28537b1f96a36a4ebb4cbcda5ff16f6, type: 3}
 --- !u!1 &309867831 stripped
 GameObject:
@@ -778,20 +775,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 763295992302727240, guid: d28537b1f96a36a4ebb4cbcda5ff16f6, type: 3}
   m_PrefabInstance: {fileID: 309867830}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &309867833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 309867831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d852983863019314db15d4b35e352248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetProvider: {fileID: 0}
-  _agent: {fileID: 0}
 --- !u!114 &309867834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -804,7 +787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef70e5ff5ef6474099e3491b553dc9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _agent: {fileID: 0}
+  _agent: {fileID: 309867835}
 --- !u!195 &309867835
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -815,10 +798,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -334000983
   m_Radius: 0.35
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 4
+  m_Acceleration: 12
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 1400
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
