@@ -38,6 +38,7 @@ public class TrainingDummyBrain : MonoBehaviour
             $"{info.Source?.name ?? "Unknown"} " +
             $"for {info.Amount} damage. " +
             $"HP: {_health.CurrentHealth}/{_health.MaxHealth}");
+       if ( _health.CurrentHealth > 0)
         _animatorDriver?.TriggerHit();
     }
 
@@ -50,6 +51,7 @@ public class TrainingDummyBrain : MonoBehaviour
 
     private void ResetDummy()
     {   
+        _animatorDriver.TriggerHit();
         _health.ResetHealth();
     }
 

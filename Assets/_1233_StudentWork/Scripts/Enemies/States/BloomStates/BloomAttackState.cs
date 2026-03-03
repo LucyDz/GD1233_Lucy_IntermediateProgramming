@@ -28,7 +28,7 @@ public class BloomAttackState : EnemyState
         }
 
         var distance = Vector3.Distance(_brain.transform.position, target.position);
-        var hasLOS = _brain.Detection.HasLineOfSight(target);
+        var hasLOS = _brain.Detection.HasLineOfSight(target, _brain.TargetProvider.GetOffset());
 
         // 2. If LOS is lost or we are out of range, go back to move state
         if (!hasLOS || distance > _brain.AttackRange)
@@ -39,10 +39,15 @@ public class BloomAttackState : EnemyState
 
         // 3. Face the player and shoot if weapon is ready
         _brain.Rotator.FacePosition(targetPos);
-        if (_brain.Weapon.CanFire)
+        if (_brain.Weapon1.CanFire)
         {
             _brain.AnimatorDriver.TriggerAttack();
-            _brain.Weapon.Fire(targetPos);
+            _brain.Weapon1.Fire(targetPos);
+        }
+        if (_brain.Weapon2.CanFire)
+        {
+            _brain.AnimatorDriver.TriggerAttack();
+            _brain.Weapon2.Fire(targetPos);
         }
 
         // 4. Optional: if player gets too close, back away (Kite)

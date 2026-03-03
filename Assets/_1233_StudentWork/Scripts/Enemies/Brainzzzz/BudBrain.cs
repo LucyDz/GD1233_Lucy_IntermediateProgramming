@@ -71,7 +71,7 @@ public class BudBrain : MonoBehaviour
 
         var target = _targetProvider.GetTarget();
         var targetPos = _targetProvider.GetTargetPosition();
-        if (_detection.IsTargetInDetectionRange(target) && _detection.HasLineOfSight(target))
+        if (_detection.IsTargetInDetectionRange(target) && _detection.HasLineOfSight(target, _targetProvider.GetOffset()))
         {
             _rotator?.FacePosition(targetPos);
             if (_weapon.CanFire)
@@ -88,7 +88,7 @@ public class BudBrain : MonoBehaviour
 
         var target = _targetProvider.GetTarget();
         var targetPos = _targetProvider.GetTargetPosition();
-        if (_detection.IsTargetInDetectionRange(target) && _detection.HasLineOfSight(target))
+        if (_detection.IsTargetInDetectionRange(target) && _detection.HasLineOfSight(target, _targetProvider.GetOffset()))
         {
             _rotator?.FacePosition(targetPos);
             if (_weapon.CanFire)
