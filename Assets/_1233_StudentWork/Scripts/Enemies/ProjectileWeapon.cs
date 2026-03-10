@@ -10,6 +10,7 @@ public class ProjectileWeapon : MonoBehaviour, IWeapon
     private float _nextFireTime;
 
     public bool CanFire => Time.time >= _nextFireTime;
+    public Transform Muzzle => _muzzle;
 
     public void Fire(Vector3 targetPosition)
     {

@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 _input;
     private CharacterController _characterController;
     private Vector3 _direction;
+    private Vector3 mousePos;
 
     [SerializeField] private float smoothTime = 0.05f;
     private float _currentVelocity;
@@ -20,6 +21,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
 
     [SerializeField] private Movement movement;
+    [SerializeField] private EnemyHealth _health;
+    [SerializeField] private ProjectileWeapon _weapon;
     #region Camera
 
 
@@ -28,7 +31,13 @@ public class PlayerController : MonoBehaviour
         CameraManager.Instance.SwitchCamera();
     }
     #endregion
-
+    public void Shoot(InputAction.CallbackContext context)
+    {
+        if (!context.started) return;
+        Debug.Log("Player attack Pew Pew");
+        _animator?.SetTrigger("Shoot");
+    }
+    
     #region Animation
     [SerializeField] private Animator _animator;
     private static readonly int Speed = Animator.StringToHash("Speed");
@@ -49,6 +58,22 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
            _characterController = GetComponent<CharacterController>();
+    }
+    private void OnEnable()
+    {
+        if (_health != null)
+        {
+            _health.OnDamaged += HandleDamaged;
+            _health.OnDied += HandleDied;
+        }
+    }
+    private void OnDisable()
+    {
+        if (_health != null)
+        {
+            _health.OnDamaged -= HandleDamaged;
+            _health.OnDied -= HandleDied;
+        }
     }
 
     private void Update()
@@ -126,6 +151,32 @@ public class PlayerController : MonoBehaviour
     }
 
     private bool IsGrounded() => _characterController.isGrounded;
+
+    private void HandleDied()
+    {
+        Debug.Log("[Player] Died! Game Over...");
+        _animator?.SetTrigger("Die");
+        _characterController = null;
+
+        StartCoroutine(GameOver());
+        
+    }
+    private void HandleDamaged(DamageInfo info)
+    {
+        Debug.Log(
+            $"[Player] Hit by " +
+            $"{info.Source?.name ?? "Unknown"} " +
+            $"for {info.Amount} damage. " +
+            $"HP: {_health.CurrentHealth}/{_health.MaxHealth}");
+        if (_health.CurrentHealth > 0)
+            _animator?.SetTrigger("Hit");
+    }
+
+    private IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(2f);
+        GameMgr.Instance.GameOver();
+    }
 }
 
 [Serializable]
