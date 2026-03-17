@@ -7,6 +7,15 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float _lifetime = 5f;
     [SerializeField] private bool _useGravity;
 
+    #region Particle
+    [SerializeField] private GameObject _impactVfxPrefab;
+
+    void SpawnImpact(Vector3 position)
+    {
+        Instantiate(_impactVfxPrefab, position, Quaternion.identity);
+    }
+    #endregion
+
     private Rigidbody _rb;
     private GameObject _source;
 
@@ -22,7 +31,7 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject == _source) return;
 
         // Check if we hit something damageable
-        var damageReceiver = collision.gameObject.GetComponentInParent<IDamageReceiver>();
+        var damageReceiver = collision.gameObject.GetComponentInChildren<IDamageReceiver>();
         if (damageReceiver != null )
         {
             var info = new DamageInfo
@@ -36,6 +45,7 @@ public class Projectile : MonoBehaviour
         }
 
         // Destroy on impact
+        SpawnImpact(collision.contacts[0].point);
         Destroy(gameObject);
     }
 

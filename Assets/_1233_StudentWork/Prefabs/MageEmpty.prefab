@@ -367,6 +367,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 243c322ce9e302b43bb4454ac6499bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screenPos: {x: 0, y: 0, z: 0}
+  _playerModel: {fileID: 1501709786129816724}
   smoothTime: 0.05
   speed: 5
   movement:

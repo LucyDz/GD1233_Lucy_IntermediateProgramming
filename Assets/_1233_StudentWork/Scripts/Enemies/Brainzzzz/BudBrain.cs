@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BudBrain : MonoBehaviour
@@ -57,14 +58,20 @@ public class BudBrain : MonoBehaviour
 
     private void OnEnable()
     {
-        if (_health != null) _health.OnDied += HandleDied;
+        if (_health != null)
+        {
+            _health.OnDamaged += HandleDamaged;
+            _health.OnDied += HandleDied;
+        }
     }
-
     private void OnDisable()
     {
-        if (_health != null) _health.OnDied -= HandleDied;
+        if (_health != null)
+        {
+            _health.OnDamaged -= HandleDamaged;
+            _health.OnDied -= HandleDied;
+        }
     }
-
     private void HandleDirectAim()
     {
         if (_targetProvider == null || !_targetProvider.HasTarget) return;
@@ -99,9 +106,29 @@ public class BudBrain : MonoBehaviour
         }
     }
 
+    private void HandleDamaged(DamageInfo info)
+    {
+        Debug.Log(
+            $"[Bud] Hit by " +
+            $"{info.Source?.name ?? "Unknown"} " +
+            $"for {info.Amount} damage. " +
+            $"HP: {_health.CurrentHealth}/{_health.MaxHealth}");
+        if (_health.CurrentHealth > 0)
+            _animator?.TriggerHit();
+    }
+
     private void HandleDied()
     {
         // Stop firing, maybe play an effect
         enabled = false;
+        _animator?.TriggerDie();
+        StartCoroutine(WaitForDeath());
+        
+        
+    }
+    IEnumerator WaitForDeath()
+    {
+        yield return new WaitForSeconds(2f);
+        GameObject.Destroy(gameObject);
     }
 }

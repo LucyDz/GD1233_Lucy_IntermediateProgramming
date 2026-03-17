@@ -4,7 +4,7 @@ public class ProjectileWeapon : MonoBehaviour, IWeapon
 {
     [SerializeField] private Projectile _projectilePrefab;
     [SerializeField] private Transform _muzzle;
-    [SerializeField] private float _fireRate = 1f;
+    [SerializeField] public float _fireRate = 1f;
     [SerializeField] private float _arcHeight = 2f;
 
     private float _nextFireTime;

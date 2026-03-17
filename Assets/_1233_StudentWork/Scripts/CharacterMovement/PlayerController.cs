@@ -13,7 +13,10 @@ public class PlayerController : MonoBehaviour
     private Vector2 _input;
     private CharacterController _characterController;
     private Vector3 _direction;
+    public Vector3 screenPos;
     private Vector3 mousePos;
+
+    [SerializeField] private GameObject _playerModel;
 
     [SerializeField] private float smoothTime = 0.05f;
     private float _currentVelocity;
@@ -34,10 +37,16 @@ public class PlayerController : MonoBehaviour
     public void Shoot(InputAction.CallbackContext context)
     {
         if (!context.started) return;
-        Debug.Log("Player attack Pew Pew");
+
         _animator?.SetTrigger("Shoot");
     }
-    
+    //public void ShootHold(InputAction.CallbackContext context)
+    //{
+    //   if (!context.) return;
+
+    //    _animator?.SetTrigger("Shoot");
+    //}
+
     #region Animation
     [SerializeField] private Animator _animator;
     private static readonly int Speed = Animator.StringToHash("Speed");
@@ -78,7 +87,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        
         ApplyGravity();
         ApplyRotation();
         ApplyMovement();
@@ -98,11 +106,19 @@ public class PlayerController : MonoBehaviour
     }
     private void ApplyRotation()
     {
-        if (_input.sqrMagnitude == 0) return;
+        //if (_input.sqrMagnitude == 0) return;
 
+        /*
         var targetAngle = Mathf.Atan2(_direction.x, _direction.z) * Mathf.Rad2Deg;
         var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _currentVelocity, smoothTime);
         transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
+        */
+        screenPos = Mouse.current.position.ReadValue();
+        mousePos = Camera.main.ScreenToWorldPoint(
+                new Vector3(screenPos.x, screenPos.y, 36.2f));
+        mousePos = new Vector3(mousePos.x, _weapon.Muzzle.position.y, mousePos.z);
+
+        _playerModel.transform.LookAt(mousePos);
     }
     private void ApplyMovement()
     {
