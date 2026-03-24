@@ -302,6 +302,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b9ead4bd-0496-4763-b12d-acebd0dd52cd
     m_ActionName: 'PlayerDefault/Shoot[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5778938854826508227}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Bomb
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: aa9b05d1-c5c0-44a4-bfc3-4c6a1fd357b0
+    m_ActionName: 'PlayerDefault/Bomb[/Mouse/rightButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerDefault
@@ -1273,6 +1289,9 @@ MonoBehaviour:
   _weapon: {fileID: 3401690914819441824}
   screenPos: {x: 0, y: 0, z: 0}
   mousePos: {x: 0, y: 0, z: 0}
+  _bombPrefab: {fileID: 1880463860103470694, guid: 2d4458a50defd244f915d7a3b83b7459, type: 3}
+  _bombThrowForce: 12
+  _bombArcAngle: 2
 --- !u!4 &2277965667389834798 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3dcb7923871a02e4288f8c602d3ab3f3, type: 3}

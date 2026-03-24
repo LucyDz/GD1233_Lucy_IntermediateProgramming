@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Movement movement;
     [SerializeField] private EnemyHealth _health;
     [SerializeField] private ProjectileWeapon _weapon;
+
+    
     #region Camera
 
 
@@ -46,6 +48,17 @@ public class PlayerController : MonoBehaviour
 
     //    _animator?.SetTrigger("Shoot");
     //}
+   
+    public void Bomb(InputAction.CallbackContext context)
+    {
+        Debug.Log("Grenade");
+        if (!context.started) return;
+        if (!_characterController.isGrounded) return;
+        //if(_isAttacking) return;
+
+        _animator?.SetTrigger("Throw");
+    }
+    
 
     #region Animation
     [SerializeField] private Animator _animator;

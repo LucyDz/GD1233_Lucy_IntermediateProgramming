@@ -136,6 +136,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Bomb"",
+                    ""type"": ""Button"",
+                    ""id"": ""aa9b05d1-c5c0-44a4-bfc3-4c6a1fd357b0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -314,6 +323,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1ce923b5-246b-41c3-88c6-25e0bf46e1eb"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Bomb"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -327,6 +347,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_PlayerDefault_Sprint = m_PlayerDefault.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerDefault_CamSwap = m_PlayerDefault.FindAction("CamSwap", throwIfNotFound: true);
         m_PlayerDefault_Shoot = m_PlayerDefault.FindAction("Shoot", throwIfNotFound: true);
+        m_PlayerDefault_Bomb = m_PlayerDefault.FindAction("Bomb", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
@@ -412,6 +433,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerDefault_Sprint;
     private readonly InputAction m_PlayerDefault_CamSwap;
     private readonly InputAction m_PlayerDefault_Shoot;
+    private readonly InputAction m_PlayerDefault_Bomb;
     /// <summary>
     /// Provides access to input actions defined in input action map "PlayerDefault".
     /// </summary>
@@ -443,6 +465,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PlayerDefault/Shoot".
         /// </summary>
         public InputAction @Shoot => m_Wrapper.m_PlayerDefault_Shoot;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerDefault/Bomb".
+        /// </summary>
+        public InputAction @Bomb => m_Wrapper.m_PlayerDefault_Bomb;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -484,6 +510,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
+            @Bomb.started += instance.OnBomb;
+            @Bomb.performed += instance.OnBomb;
+            @Bomb.canceled += instance.OnBomb;
         }
 
         /// <summary>
@@ -510,6 +539,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
+            @Bomb.started -= instance.OnBomb;
+            @Bomb.performed -= instance.OnBomb;
+            @Bomb.canceled -= instance.OnBomb;
         }
 
         /// <summary>
@@ -585,5 +617,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnShoot(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Bomb" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnBomb(InputAction.CallbackContext context);
     }
 }
