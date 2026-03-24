@@ -9,6 +9,7 @@ public class EnemyHealth : MonoBehaviour
     public int CurrentHealth { get; private set; }
 
     public int MaxHealth => _maxHealth;
+    public float NormalizedHealth => _maxHealth <= 0 ? 0f : (float)CurrentHealth / _maxHealth;
     public bool IsDead { get; private set; }
 
     private void Awake()
@@ -20,12 +21,14 @@ public class EnemyHealth : MonoBehaviour
     public event Action OnDied;
     public event Action OnHealed;
     public event Action OnReset;
+    public event Action<EnemyHealth> OnHealthChanged;
 
     public void ResetHealth()
     {
         CurrentHealth = _maxHealth;
         IsDead = false;
         OnReset?.Invoke();
+        OnHealthChanged?.Invoke(this);
     }
 
     public void ApplyDamage(DamageInfo info)
@@ -38,6 +41,7 @@ public class EnemyHealth : MonoBehaviour
         OnDamaged?.Invoke(info);
 
         if (CurrentHealth <= 0) Die();
+        OnHealthChanged?.Invoke(this);
     }
 
     public void Heal(int amount)
@@ -47,6 +51,7 @@ public class EnemyHealth : MonoBehaviour
         CurrentHealth += amount;
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, _maxHealth);
         OnHealed?.Invoke();
+        OnHealthChanged?.Invoke(this);
     }
 
     private void Die()

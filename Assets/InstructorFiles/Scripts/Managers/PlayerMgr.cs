@@ -11,6 +11,7 @@ public class PlayerMgr : Singleton<PlayerMgr>
 
     public GameObject PlayerObject { get; private set; }
     public bool HasSpawnedPlayer => PlayerObject != null;
+    public event Action<GameObject> OnPlayerAssigned;
 
     public void SpawnPlayer(Vector3 position,Quaternion rotation)
     {
@@ -21,6 +22,7 @@ public class PlayerMgr : Singleton<PlayerMgr>
         }
 
         PlayerObject = Instantiate(_playerPrefab, position, rotation);
+        OnPlayerAssigned?.Invoke(PlayerObject);
         Debug.Log("Player spawned");
     }
 
@@ -33,5 +35,6 @@ public class PlayerMgr : Singleton<PlayerMgr>
     public void DebugAssignAsPlayer(GameObject existingPlayer)
     {
         PlayerObject = existingPlayer;
+        OnPlayerAssigned?.Invoke(PlayerObject);
     }
 }

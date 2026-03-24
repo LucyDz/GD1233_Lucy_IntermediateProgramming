@@ -29,6 +29,11 @@ public class MainMenu : MenuBase
     {
         UIMgr.Instance.ShowMenu(GameMenus.SettingsMenu);
     }
+    public void ButtonLevelSelect()
+    {
+        UIMgr.Instance.ShowMenu(GameMenus.LevelSelectMenu);
+    }
+
 
     public void ButtonQuit()
     {
