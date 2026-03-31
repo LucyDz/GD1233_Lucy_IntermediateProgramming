@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: _useGravity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5478796742213125294, guid: fac90f1c19503ee4498bd9bff71bd973, type: 3}
+      propertyPath: _impactVfxPrefab
+      value: 
+      objectReference: {fileID: 2017198673987706248, guid: 6e75ec15b8ca1f944b9c7196ec9d0614, type: 3}
     - target: {fileID: 5844118005928463808, guid: fac90f1c19503ee4498bd9bff71bd973, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -63,6 +67,10 @@ PrefabInstance:
     - target: {fileID: 5844118005928463808, guid: fac90f1c19503ee4498bd9bff71bd973, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7615781898524711507, guid: fac90f1c19503ee4498bd9bff71bd973, type: 3}
+      propertyPath: m_Intensity
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
