@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections;
 
 public class BloomBrain : MonoBehaviour
 {
@@ -60,6 +61,12 @@ public class BloomBrain : MonoBehaviour
         }
 
         _animatorDriver.TriggerDie();
+        StartCoroutine(WaitForDeath());
         enabled = false;
+    }
+    IEnumerator WaitForDeath()
+    {
+        yield return new WaitForSeconds(2f);
+        GameObject.Destroy(gameObject);
     }
 }

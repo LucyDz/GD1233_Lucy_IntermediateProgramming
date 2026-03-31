@@ -460,6 +460,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8239597860653104355, guid: f66100fe675188247a4630d061fcf3ac, type: 3}
+      propertyPath: _allLevelData.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8239597860653104355, guid: f66100fe675188247a4630d061fcf3ac, type: 3}
+      propertyPath: _allLevelData.Array.data[0].LevelName
+      value: Level 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8239597860653104355, guid: f66100fe675188247a4630d061fcf3ac, type: 3}
+      propertyPath: _allLevelData.Array.data[0].SceneName
+      value: Level_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8239597860653104355, guid: f66100fe675188247a4630d061fcf3ac, type: 3}
+      propertyPath: _allLevelData.Array.data[1].LevelName
+      value: Level 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8239597860653104355, guid: f66100fe675188247a4630d061fcf3ac, type: 3}
+      propertyPath: _allLevelData.Array.data[1].SceneName
+      value: Level_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8239597860653104355, guid: f66100fe675188247a4630d061fcf3ac, type: 3}
+      propertyPath: _allLevelData.Array.data[2].LevelName
+      value: Level 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8239597860653104355, guid: f66100fe675188247a4630d061fcf3ac, type: 3}
+      propertyPath: _allLevelData.Array.data[2].SceneName
+      value: Level_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8239597860653104355, guid: f66100fe675188247a4630d061fcf3ac, type: 3}
+      propertyPath: _allLevelData.Array.data[3].LevelName
+      value: Level 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8239597860653104355, guid: f66100fe675188247a4630d061fcf3ac, type: 3}
+      propertyPath: _allLevelData.Array.data[3].SceneName
+      value: Level_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8239597860653104355, guid: f66100fe675188247a4630d061fcf3ac, type: 3}
+      propertyPath: _allLevelData.Array.data[4].LevelName
+      value: Level 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8239597860653104355, guid: f66100fe675188247a4630d061fcf3ac, type: 3}
+      propertyPath: _allLevelData.Array.data[4].SceneName
+      value: Level_5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

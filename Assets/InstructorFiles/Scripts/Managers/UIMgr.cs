@@ -108,6 +108,7 @@ public class UIMgr : Singleton<UIMgr>
         {
             // instantiate the game object
             var createdMenu = Instantiate(GetMenuPrefabFromType(menu), transform);
+            //createdMenu.transform.localScale = Vector3.one;
             // Call for self-setup
             createdMenu.OnInstantiate();
             _menuInstances.Add(menu, createdMenu);

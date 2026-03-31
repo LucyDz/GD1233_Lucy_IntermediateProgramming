@@ -51,6 +51,18 @@ PrefabInstance:
       propertyPath: _animator
       value: 
       objectReference: {fileID: 763295992294940576}
+    - target: {fileID: 3509594438541250900, guid: 61200dadbd601d8418e3bee314301069, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3509594438541250900, guid: 61200dadbd601d8418e3bee314301069, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3509594438541250900, guid: 61200dadbd601d8418e3bee314301069, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.62
+      objectReference: {fileID: 0}
     - target: {fileID: 3990736311433706942, guid: 61200dadbd601d8418e3bee314301069, type: 3}
       propertyPath: m_LocalPosition.x
       value: -22

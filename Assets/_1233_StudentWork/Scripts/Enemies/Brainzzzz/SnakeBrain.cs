@@ -1,5 +1,6 @@
 using System.Xml.Serialization;
 using UnityEngine;
+using System.Collections;
 
 public class SnakeBrain : MonoBehaviour
 {
@@ -62,7 +63,13 @@ public class SnakeBrain : MonoBehaviour
         }
 
         _animatorDriver.TriggerDie();
+        StartCoroutine(WaitForDeath());
         enabled = false;
+    }
+    IEnumerator WaitForDeath()
+    {
+        yield return new WaitForSeconds(2f);
+        GameObject.Destroy(gameObject);
     }
 
 }

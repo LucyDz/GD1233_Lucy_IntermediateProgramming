@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class SpikeBrain : MonoBehaviour
 {
@@ -48,5 +49,12 @@ public class SpikeBrain : MonoBehaviour
         }
 
         if (_animatorDriver != null) _animatorDriver.TriggerDie();
+        StartCoroutine(WaitForDeath());
+    }
+
+    IEnumerator WaitForDeath()
+    {
+        yield return new WaitForSeconds(2f);
+        GameObject.Destroy(gameObject);
     }
 }
