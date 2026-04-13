@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 /// <summary>
@@ -13,6 +14,9 @@ public class GameUI : MenuBase
     [SerializeField] private Image _healthFillImage;
 
     private EnemyHealth _playerHealth;
+
+    [SerializeField] private TextMeshProUGUI _bombcounter;
+    private int _bombammo;
 
     private void OnEnable()
     {
@@ -30,6 +34,8 @@ public class GameUI : MenuBase
         }
         //Otherwise wait for the player to spawn
         PlayerMgr.Instance.OnPlayerAssigned += HandlePlayerAssigned;
+
+        
     }
 
     private void OnDisable()
@@ -46,6 +52,7 @@ public class GameUI : MenuBase
         }
 
         _playerHealth = playerObject.GetComponentInChildren<EnemyHealth>();
+        _bombammo = playerObject.GetComponentInChildren<PlayerController>().BombAmmo;
         if (_playerHealth == null)
         {
             Debug.LogError("GameUI: Player object does not have a Health component");
@@ -53,7 +60,10 @@ public class GameUI : MenuBase
         }
 
         _playerHealth.OnHealthChanged += RefreshHealthBar;
+        playerObject.GetComponentInChildren<PlayerController>().OnBombAmmoChanged += RefreshBombAmmo;
+
         RefreshHealthBar(_playerHealth);
+        RefreshBombAmmo(_bombammo);
     }
 
     private void RefreshHealthBar(EnemyHealth health)
@@ -62,4 +72,12 @@ public class GameUI : MenuBase
 
         _healthFillImage.fillAmount = health != null ? health.NormalizedHealth : 0f;
     }
+
+    private void RefreshBombAmmo(int addedammo)
+    {
+        if (_bombcounter == null) return;
+       
+        _bombcounter.text = addedammo.ToString();
+        
+    } 
 }

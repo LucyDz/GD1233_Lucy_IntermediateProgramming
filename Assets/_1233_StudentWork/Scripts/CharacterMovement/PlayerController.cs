@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 
 
-[RequireComponent (typeof(CharacterController))]
+[RequireComponent(typeof(CharacterController))]
 
 public class PlayerController : MonoBehaviour
 {
@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Movement movement;
     [SerializeField] private EnemyHealth _health;
     [SerializeField] private ProjectileWeapon _weapon;
+    [SerializeField] private int _bombAmmo;
+    public event System.Action<int> OnBombAmmoChanged;
+    public int BombAmmo { get { return _bombAmmo; } set { _bombAmmo = value; OnBombAmmoChanged?.Invoke(_bombAmmo); } }
 
     
     #region Camera
@@ -52,11 +55,14 @@ public class PlayerController : MonoBehaviour
     public void Bomb(InputAction.CallbackContext context)
     {
         Debug.Log("Grenade");
+        if (_bombAmmo <= 0) return;
         if (!context.started) return;
         if (!_characterController.isGrounded) return;
         //if(_isAttacking) return;
 
+        OnBombAmmoChanged?.Invoke(--BombAmmo);
         _animator?.SetTrigger("Throw");
+        
     }
     
 
