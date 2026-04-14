@@ -64,6 +64,11 @@ public class PlayerController : MonoBehaviour
         _animator?.SetTrigger("Throw");
         
     }
+    public void Pause(InputAction.CallbackContext context)
+    {
+        if(!context.started) return;
+        UIMgr.Instance.ShowMenu(GameMenus.SettingsMenu);
+    }
     
 
     #region Animation

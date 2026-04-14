@@ -50,4 +50,18 @@ public class Settings : MenuBase
         Debug.Log($"Sound Volume is {value}");
         AudioMgr.Instance.SfxVolume = value;
     }
+
+    public void MuteVol(bool value)
+    {
+        if (value == true)
+        {
+            AudioMgr.Instance.MusicVolume = -80;
+            AudioMgr.Instance.SfxVolume = -80;
+        }
+        else 
+        {
+            AudioMgr.Instance.MusicVolume = 0;
+            AudioMgr.Instance.SfxVolume = 0;
+        }
+    }
 }
