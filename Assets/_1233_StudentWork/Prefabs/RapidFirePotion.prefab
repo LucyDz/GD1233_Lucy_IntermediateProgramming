@@ -202,6 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rapidFireSeconds: 5
   _potion: {fileID: 343851912217007787}
+  _pickupVFX: {fileID: 8330090393803282755, guid: f71dd2a35806f3a4ba43a9909ddae6ee, type: 3}
 --- !u!136 &2488505869133485705
 CapsuleCollider:
   m_ObjectHideFlags: 0

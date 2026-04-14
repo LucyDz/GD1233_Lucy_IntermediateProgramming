@@ -211,7 +211,9 @@ MonoBehaviour:
     LMB
     - Shoot
 
-    RMB - Potion Bomb'
+    RMB - Potion Bomb
+
+    T - Change Camera'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4cf7afde5b22ea94493fef64942c8373, type: 2}
   m_sharedMaterial: {fileID: 8189745745570310729, guid: 4cf7afde5b22ea94493fef64942c8373, type: 2}

@@ -5,6 +5,7 @@ public class RapidFirePotion : MonoBehaviour
 {
     [SerializeField] private float _rapidFireSeconds = 5f;
     [SerializeField] private GameObject _potion;
+    [SerializeField] private GameObject _pickupVFX;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -12,6 +13,8 @@ public class RapidFirePotion : MonoBehaviour
         var weapon = other.GetComponent<ProjectileWeapon>();
         if (weapon == null) return;
 
+        if (_pickupVFX != null)
+            Instantiate(_pickupVFX, transform.position, Quaternion.identity);
         weapon.StartCoroutine(ApplyRapidFire(weapon));
         Destroy(_potion);
     }

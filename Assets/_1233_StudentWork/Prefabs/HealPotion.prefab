@@ -202,6 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _potion: {fileID: 343851912217007787}
   _healamount: 100
+  _pickupVFX: {fileID: 8330090393803282755, guid: aff0b2be2c2f3dc459cb36f9ae41e475, type: 3}
 --- !u!136 &2488505869133485705
 CapsuleCollider:
   m_ObjectHideFlags: 0

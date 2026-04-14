@@ -225,6 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _potion: {fileID: 343851912217007787}
   _ammoamount: 4
+  _pickupVFX: {fileID: 8330090393803282755, guid: 27f88f6fd90bc964c87acc1f7e2f9393, type: 3}
 --- !u!1 &5064083510111423381
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 public class ParticleAutoCleanup : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _particleSystem;
+    [SerializeField] private AudioSource _sound;
 
     private void Awake()
     {
@@ -24,6 +25,8 @@ public class ParticleAutoCleanup : MonoBehaviour
 
         // wait until particle system fully finishes
         yield return new WaitUntil(() => !_particleSystem.IsAlive(true));
+        if (_sound != null)
+            yield return new WaitUntil(() => !_sound.isPlaying);
 
         Destroy(gameObject);
     }
