@@ -39,6 +39,7 @@ public class SnakeAttackState : EnemyState
     {
         var target = _brain.TargetProvider.GetTarget();
         if (target == null) return;
+        
 
         // Final check to see if target is still in range
         if (Vector3.Distance(_brain.transform.position, target.position) <= _brain.AttackRange + 0.5f)

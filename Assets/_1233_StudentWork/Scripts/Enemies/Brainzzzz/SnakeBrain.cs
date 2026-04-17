@@ -17,6 +17,7 @@ public class SnakeBrain : MonoBehaviour
 
     [SerializeField] private float _attackCooldown = 2f;
     [SerializeField] private int _attackDamage = 15;
+    public bool IsDead { get; private set; }
 
     public IMover Mover { get; private set; }
 
@@ -55,6 +56,9 @@ public class SnakeBrain : MonoBehaviour
 
     private void HandleDied()
     {
+        if(IsDead) return;
+        IsDead = true;
+
         _stateMachine.ChangeState(null);
         if(Mover != null)
         {
